@@ -4,12 +4,14 @@ import com.codeborne.selenide.SelenideElement;
 import data.DataHelper;
 import org.openqa.selenium.Keys;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
     private SelenideElement loginField = $("[data-test-id=login] input");
     private SelenideElement passwordField = $("[data-test-id=password] input");
     private SelenideElement loginButton = $("[data-test-id=action-login]");
+    private SelenideElement textError = $("body");
 
     public VerificationPage validLogin(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
@@ -25,5 +27,9 @@ public class LoginPage {
         passwordField.setValue(info.getPassword());
         loginButton.click();
         return new LoginPage();
+    }
+
+    public SelenideElement error() {
+        return textError.shouldHave(text("Пользователь заблокирован"));
     }
 }

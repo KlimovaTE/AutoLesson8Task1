@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import page.LoginPage;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
 class LoginTest {
@@ -38,5 +39,6 @@ class LoginTest {
         loginPage.invalidLogin(DataHelper.getInvalidPassFirstAuthInfo());
         loginPage.invalidLogin(DataHelper.getInvalidPassFirstAuthInfo());
         loginPage.invalidLogin(DataHelper.getInvalidPassFirstAuthInfo());
+        loginPage.error().shouldBe(visible);
     }
 }
