@@ -39,6 +39,6 @@ class LoginTest {
         loginPage.invalidLogin(DataHelper.getInvalidPassFirstAuthInfo());
         loginPage.invalidLogin(DataHelper.getInvalidPassFirstAuthInfo());
         loginPage.invalidLogin(DataHelper.getInvalidPassFirstAuthInfo());
-        loginPage.error().shouldBe(visible);
+        loginPage.error();
     }
 }

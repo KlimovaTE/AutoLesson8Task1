@@ -5,6 +5,7 @@ import data.DataHelper;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
@@ -29,7 +30,7 @@ public class LoginPage {
         return new LoginPage();
     }
 
-    public SelenideElement error() {
-        return textError.shouldHave(text("Пользователь заблокирован"));
+    public void error() {
+        textError.shouldHave(text("Пользователь заблокирован")).shouldBe(visible);
     }
 }
